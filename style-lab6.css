@@ -264,3 +264,68 @@ header, main, aside {
 .page-btn.active, .page-btn:hover { background-color: #2A3324; color: #fff; }
 
 /* --- 5. ЖОРСТКЕ ЗАОКРУГЛЕН
+/* ========================================= */
+/* ПОРЯТУНОК ДЛЯ МОБІЛКИ (АДАПТИВНІСТЬ)      */
+/* ========================================= */
+@media screen and (max-width: 900px) {
+    /* 1. Ламаємо 3 колонки і ставимо все в один стовпець */
+    .grid-container {
+        grid-template-areas: 
+            "header" 
+            "main" 
+            "sidebar1" 
+            "sidebar2" 
+            "footer";
+        grid-template-columns: 1fr; /* Одна колонка на всю ширину */
+        padding: 10px;
+    }
+
+    /* 2. Вимикаємо "липкість" сайдбарів на телефоні */
+    .grid-sidebar1, .grid-sidebar2 {
+        position: static;
+        width: 100%;
+    }
+
+    /* 3. Рятуємо банер (зменшуємо текст і відступи) */
+    .hero-content {
+        left: 20px;
+        right: 20px;
+    }
+    .hero-content h1 {
+        font-size: 22px; /* Менший заголовок */
+        margin-bottom: 10px;
+    }
+    .hero-content p {
+        font-size: 11px; /* Менший опис */
+        margin-bottom: 15px;
+    }
+    .btn-primary, .btn-outline {
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+
+    /* 4. Рятуємо каталог (робимо по 2 товари в ряд, а не 3) */
+    .catalog-wrapper {
+        padding: 0 10px; 
+    }
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 15px;
+    }
+
+    /* 5. Футер робимо стовпчиком */
+    .footer-top {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+/* Якщо екран зовсім вузький (менше 500px) */
+@media screen and (max-width: 500px) {
+    .products-grid {
+        grid-template-columns: 1fr; /* По 1 товару в ряд */
+    }
+    .hero-buttons {
+        flex-direction: column; /* Кнопки на банері одна під одною */
+    }
+}
